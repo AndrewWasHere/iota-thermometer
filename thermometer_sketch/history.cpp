@@ -1,61 +1,35 @@
 #include "history.h"
 
-char * const trend(Trend t) {
-  if (t == TREND_FALLING) return "falling";
-  if (t == TREND_STEADY) return "steady";
-  if (t == TREND_RISING) return "rising";
-  else return "unknown trend";
-}
+#define LATEST 0
+#define PREVIOUS 1
+#define FIRST 2
 
-History::History() : size(0) {}
+History::History() : n_values(0) {}
 
 void History::push(float value) {
-  if (size == 3) {
-    // History is complete. Shift and store.
-    for(std::size_t idx = 0; idx < size - 1; ++idx) {
-      values[idx] = values[idx + 1];
-    }
-    values[size - 1] = value;
-  }
-  else {
-    // History is incomplete. Just store.
-    values[size++] = value;
-  }
+  values[FIRST] = values[PREVIOUS];
+  values[PREVIOUS] = values[LATEST];
+  values[LATEST] = value;
+
+  if (n_values < 3) ++n_values;
 }
 
-Trend History::trend() {
-  float const large_threshold = 1.0;
-  float const threshold = 0.5;
-  float short_delta = size > 1 ? (values[size - 1] - values[size - 2]) : 0.0;
-  float long_delta = values[2] - values[0];
+float History::latest() {
+  return values[LATEST];
+}
 
-  if (size < 3) {
-    if (short_delta > large_threshold) return TREND_RISING;
-    if (short_delta < -large_threshold) return TREND_FALLING;
-    return TREND_STEADY;
-  }
-  
-  if (
-    short_delta > large_threshold
-    || (
-      values[0] < values[1]
-      && values[1] < values[2]
-      && long_delta >= threshold
-    )
-  ) {
-    return TREND_RISING;
-  }
+float History::previous() {
+  return values[PREVIOUS];
+}
 
-  if (
-    short_delta < -large_threshold
-    || (
-      values[0] > values[1]
-      && values[1] > values[2]
-      && long_delta <= -threshold
-    )
-  ) {
-    return TREND_FALLING;
-  }
+float History::first() {
+  return values[FIRST];
+}
 
-  return TREND_STEADY;
+bool History::full() {
+  return n_values >= 3;
+}
+
+bool History::empty() {
+  return n_values == 0;
 }

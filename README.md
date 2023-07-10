@@ -36,6 +36,12 @@ extern Secrets secrets;
 secrets.cpp:
 ```cpp
 #include "secrets.h"
-Secrets secrets = { "<ssid>", "<password>", "<iota_id>", "http://<iota_url>" };
+
+Secrets secrets = { 
+    "<ssid>",           // replace with WiFi SSID.
+    "<password>",       // replace with WiFi password.
+    "<iota_id>",        // replace with unique Iota ID.
+    "http://<iota_url>" // replace with Iota URL.
+};
 ```
 

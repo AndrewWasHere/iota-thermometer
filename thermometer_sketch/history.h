@@ -1,17 +1,18 @@
 #ifndef IOTA_HISTORY
-#defin IOTA_HISTORY
+#define IOTA_HISTORY
 
 #include <cstddef>
-
-enum Trend { TREND_FALLING, TREND_STEADY, TREND_RISING };
-char * const trend(Trend t);
 
 struct History {
   History();
   void push(float value);
-  Trend trend();
+  float latest();
+  float previous();
+  float first();
+  bool full();
+  bool empty();
 
-  std::size_t size;
+  size_t n_values;
   float values[3];
 };
 
