@@ -28,4 +28,7 @@ Secrets secrets = {
     "http://<iota_url>" // replace with Iota URL.
 };
 ```
+## License
+
+Distributed under the MIT License. See LICENSE.txt for more information.
 
