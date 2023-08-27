@@ -14,24 +14,8 @@ Arduino libraries:
 * Adafruit PCT2075
 
 ## Configuration
-Create `secrets.h` and `secrets.cpp` in the sketch. Copy and paste the
-following code into the appropriate files, and replace necessary values.
-
-secrets.h:
-```cpp
-#ifndef IOTA_SECRETS_H
-#define IOTA_SECRETS_H
-
-struct Secrets {
-    char const * ssid;
-    char const * password;
-    char const * iota_id;
-    char const * iota_url;
-};
-
-extern Secrets secrets;
-#endif
-```
+Create `secrets.cpp` in the sketch. Copy and paste the following code into the 
+appropriate file, and replace necessary values.
 
 secrets.cpp:
 ```cpp

@@ -1,13 +1,20 @@
 /*
     Settings in mm
+
+    US #6 Screw:
+      head_diameter = 6
+      shaft_diameter = 3
+    US #8 Screw:
+      head_diameter = 8
+      shaft_diameter = 4
 */
-hanger_screw_head_diameter = 10;
-hanger_screw_shaft_diameter = 5;
+hanger_screw_head_diameter = 8;
+hanger_screw_shaft_diameter = 4;
 nut_diameter = 6;  // vertex-to-vertex diameter
 nut_height = 2;
 standoff_id = 3;
 standoff_od = 5;
-standoff_screw_length = 8.5;  // below the head length
+standoff_screw_length = 8.75;  // below the head length
 
 function base_measurements() = [60, 60];
 function display_measurements() = [45.5 / 2, 18 / 2];

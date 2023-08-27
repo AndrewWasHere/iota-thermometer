@@ -198,7 +198,7 @@ void log_temp(float temp_c, float temp_f, Trend change) {
   Register with Iota.
 */
 void register_thing() {
-  char const * fmtstr = "{ \"id\": \"%s\", \"primary\": \"temperature\", \"temperature\": \"REAL\" }";
+  char const * fmtstr = "{ \"id\": \"%s\", \"temperature\": \"REAL\" }";
   char body[strlen(fmtstr) + strlen(secrets.iota_id) + 1] = {0};
   sprintf(body, fmtstr, secrets.iota_id);
   Serial.print("Registering with Iota as ");
